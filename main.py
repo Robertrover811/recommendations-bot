@@ -43,6 +43,15 @@ async def sendEmbed(ctx):
         title="tanks", description="boats", color=0x000053)
     await ctx.send(embed=embedVar)
 
+@bot.event
+async def on_command_error(ctx,error):
+  if isinstance(error,commands.CommandNotFound):
+    await ctx.send("Command Not Found")
+  elif isinstance(error,commands.MissingPermissions):
+    await ctx.send("You do not have the permissions to do that.")
+  elif isinstance(error,commands.MissingRequiredArgument):
+    await ctx.send("Please fill in all the required arguments.")
+
 
 # ------------------ Discord bot method definitions------------------
 
